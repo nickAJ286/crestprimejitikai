@@ -32,7 +32,7 @@ https://docs.google.com/spreadsheets/d/1ClsACndiVJNfqMjd0ZKhxHyk3vTEo3YrlZtCrsG1
 メール通知機能、スケジュール機能
 
 # データベース設計
-![Alt text](ER.png)
+
 
 # 画面遷移図
 ![Alt text](draw.png)
