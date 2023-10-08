@@ -1,0 +1,44 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @event, id: 'new_edit',local: true do |f| %>
+  <div class="field">
+    <%= f.label :イベント名 %><br />
+    <%= f.text_area :name, placeholder:"イベント名（必須 40文字まで)", maxlength:"40" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :キャッチコピー %><br />
+    <%= f.text_area :catch_copy, placeholder:"イベントのキャッチコピーをお願いします（必須 128文字まで)", maxlength:"128" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :イベント内容 %><br />
+    <%= f.text_area :explanation, placeholder:"可能な限り詳細を記入して下さい（10000文字まで)", maxlength:"10000" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :開催日（希望日） %><br />
+    <%= f.date_select :event_date, placeholder:"希望の開催日があれば選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :開催時間（希望開始時間） %><br />
+    <%= f.time_select :event_date, placeholder:"希望の開催時間があれば選択して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :開催場所 %><br />
+    <%= f.text_area :place, placeholder:"想定している開催場所があれば記入して下さい" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :定員 %><br />
+    <%= f.text_area :capacity, placeholder:"想定している定員があれば記入して下さい 例）30人、親子10組" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :参加費 %><br />
+    <%= f.text_area :price, placeholder:"参加費が必要な場合は記入して下さい" %>
+  </div>
+  <%= f.submit "提案する" %>
+<% end %>
