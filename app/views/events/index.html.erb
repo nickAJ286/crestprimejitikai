@@ -1,0 +1,5 @@
+<%= render "shared/header" %>
+<% if user_signed_in?  %>
+  <%= link_to "イベントの提案はこちら", new_event_path %><br />
+<% end %>
+イベント一覧
