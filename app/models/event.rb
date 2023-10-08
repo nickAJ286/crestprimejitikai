@@ -6,4 +6,5 @@ class Event < ApplicationRecord
   has_many :pre_comments
   has_many :before_comments
   has_many :after_comments
+  has_one_attached :image
 end
