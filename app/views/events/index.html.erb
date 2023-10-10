@@ -2,10 +2,38 @@
 <% if user_signed_in?  %>
   <%= link_to "イベントの提案はこちら", new_event_path %><br />
 <% end %>
-<h2>イベント一覧</h2>
-<% @events.each do |event| %>
-  <%= link_to event_path(event.id) do %>
-    <h3><%= event.name %></h3><%= event.catch_copy %><br>
+
+<% if user_signed_in? %>
+  <% @events.each do |event| %>
+    <% if event.approvals.where(pros_and_cons_id: 2).count <= 0 %>
+      <% if (current_user.role_id == 2) || (current_user.id == event.user_id) %>
+        <h2>審議中</h2>
+        <%= link_to event_path(event.id) do %>
+          <h3><%= event.name %></h3>
+          <%= event.catch_copy %><br>
+        <% end %>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      <% end %>
+    <% end %>
   <% end %>
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<% end %>
+
+<h2>開催予定のイベント一覧</h2>
+<% @events.each do |event| %>
+  <% if event.approvals.where(pros_and_cons_id: 2).count >= 1 && event.event_date < Date.today %>
+    <%= link_to event_path(event.id) do %>
+      <h3><%= event.name %></h3><%= event.catch_copy %><br>
+    <% end %>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  <% end %>
+<% end %>
+
+<h2>過去のイベント</h2>
+<% @events.each do |event| %>
+  <% if event.approvals.where(pros_and_cons_id: 2).count >= 1 && event.event_date >= Date.today %>
+    <%= link_to event_path(event.id) do %>
+      <h3><%= event.name %></h3><br>
+    <% end %>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  <% end %>
 <% end %>

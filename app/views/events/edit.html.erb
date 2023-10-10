@@ -2,6 +2,8 @@
 
 <%= form_with model: @event, id: 'new_edit',local: true do |f| %>
 
+<%#= f.file_field :image %>
+
 <div class="field">
     <%= f.label :イベント名 %><br />
     <%= f.text_area :name, placeholder:"イベント名（必須 40文字まで)", maxlength:"40" %>
