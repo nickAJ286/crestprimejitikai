@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all
+    @approvals = Approval.all
   end
 
   def new
@@ -18,8 +19,21 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @approvals = @event.approvals
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event.id)
+    else
+      render :edit
+    end
+  end
   private
 
   def event_params

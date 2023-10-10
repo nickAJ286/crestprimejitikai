@@ -1,0 +1,42 @@
+<%= render "shared/header" %>
+
+<h2>イベント名</h2>
+<%= @event.name %>
+<h3>キャッチコピー</h3>
+<%= @event.catch_copy %>
+<h3>詳細</h3>
+<%= @event.explanation %>
+<h3>開催日</h3>
+<%= @event.event_date %>
+<h3>開催時間</h3>
+<%= @event.event_time %>
+<h3>開催場所</h3>
+<%= @event.place %>
+<h3>定員</h3>
+<%= @event.capacity %>
+<h3>参加費</h3>
+<%= @event.price%><br>
+
+<% if user_signed_in? %>
+  <% if current_user.role_id == 2 %>
+    <% if @approvals.pluck(:user_id).include?(current_user.id) %>
+      <%= link_to "投票を変更する", edit_event_approval_path(@event, @approvals) %>
+    <% elsif %>
+      <%= link_to "投票する", event_approvals_path(@event) %>
+    <% end %>
+  <% end %>
+
+  <% if current_user.id == @event.user_id  || current_user.role_id == 2 %>
+    <%= link_to "編集する", edit_event_path(@event.id) %>
+
+  <h2>投票状況</h2>
+  現在の賛成者数<%= @approvals.where(pros_and_cons_id: 2).count %>人<br>
+  あと<%= 1 - @approvals.where(pros_and_cons_id: 2).count %>人の賛成で開催になります<br>
+  **********************************************************************<br>
+    <% @approvals.each do |approval| %>
+      <%= approval.user.nickname %>さん：<%= approval.pros_and_cons.name %>
+      <h3><%= approval.opinion %></h3>
+    <% end %>
+  <% end %>
+<% end %>
+<%=link_to 'トップページ', root_path %>
