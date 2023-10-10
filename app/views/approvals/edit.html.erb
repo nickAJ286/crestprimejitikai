@@ -1,0 +1,13 @@
+<h2>イベント名</h2>
+<%= @event.name %>
+<h3>キャッチコピー</h3>
+<%= @event.catch_copy %>
+
+<%= form_for @approval , url: event_approval_path(@event, @approval), method: :patch, local: true do |f| %>
+  <%= f.label :賛否 %><br />
+  <%= f.collection_select(:pros_and_cons_id, ProsAndCons.all, :id, :name, {}) %>
+  <%= f.label :コメント %><br />
+  <%= f.text_field :opinion %>
+  <%= f.submit "変更する"  %>
+<% end %>
+<%=link_to 'トップへもどる', root_path, class:"back-btn" %>
