@@ -2,4 +2,10 @@
 <% if user_signed_in?  %>
   <%= link_to "イベントの提案はこちら", new_event_path %><br />
 <% end %>
-イベント一覧
+<h2>イベント一覧</h2>
+<% @events.each do |event| %>
+  <%= link_to event_path(event.id) do %>
+    <h3><%= event.name %></h3><%= event.catch_copy %><br>
+  <% end %>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<% end %>
