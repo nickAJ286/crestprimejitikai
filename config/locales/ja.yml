@@ -1,4 +1,6 @@
 ja:
-  time:
-    formats:
-      default: "%H:%M"
+  date:
+    order:
+      - :year
+      - :month
+      - :day
