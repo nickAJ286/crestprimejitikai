@@ -23,7 +23,7 @@
       <% if @approvals.where(pros_and_cons_id: 2).count < 1 %>
         <% if @approvals.pluck(:user_id).include?(current_user.id) %>
           <%= link_to "投票を変更する", edit_event_approval_path(@event, @approvals) %>
-        <% elsif %>
+        <% else %>
           <%= link_to "投票する", event_approvals_path(@event) %>
         <% end %>
       <% end %>
