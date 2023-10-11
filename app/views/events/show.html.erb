@@ -9,7 +9,9 @@
 <h3>開催日</h3>
 <%= @event.event_date %>
 <h3>開催時間</h3>
-<%= @event.event_time %>
+<% unless @event.event_time == nil %>
+  <%= @event.event_time.strftime('%H:%M') %>
+<% end %>
 <h3>開催場所</h3>
 <%= @event.place %>
 <h3>定員</h3>
@@ -17,7 +19,7 @@
 <h3>参加費</h3>
 <%= @event.price%><br>
 
-<% if @event.event_date < Date.today %>
+<% if @event.event_date > Date.today %>
   <% if user_signed_in? %>
     <% if current_user.role_id == 2 %>
       <% if @approvals.where(pros_and_cons_id: 2).count < 1 %>
@@ -40,7 +42,7 @@
             <%= approval.user.nickname %>さん：<%= approval.pros_and_cons.name %>
             <h3><%= approval.opinion %></h3>
           <% end %>
-        <% elsif %>
+        <% else %>
         <h2>開催決定！！</h2>
         <% end %>
     <% end %>

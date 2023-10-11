@@ -20,7 +20,7 @@
 
 <h2>開催予定のイベント一覧</h2>
 <% @events.each do |event| %>
-  <% if event.approvals.where(pros_and_cons_id: 2).count >= 1 && event.event_date < Date.today %>
+  <% if event.approvals.where(pros_and_cons_id: 2).count >= 1 && event.event_date > Date.today %>
     <%= link_to event_path(event.id) do %>
       <h3><%= event.name %></h3><%= event.catch_copy %><br>
     <% end %>
@@ -30,7 +30,7 @@
 
 <h2>過去のイベント</h2>
 <% @events.each do |event| %>
-  <% if event.approvals.where(pros_and_cons_id: 2).count >= 1 && event.event_date >= Date.today %>
+  <% if event.approvals.where(pros_and_cons_id: 2).count >= 1 && event.event_date <= Date.today %>
     <%= link_to event_path(event.id) do %>
       <h3><%= event.name %></h3><br>
     <% end %>
