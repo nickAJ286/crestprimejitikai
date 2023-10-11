@@ -20,6 +20,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @approvals = @event.approvals
+    @pre_comments = @event.pre_comments.includes(:user)
+    @pre_comment = PreComment.new
   end
 
   def edit

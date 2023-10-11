@@ -42,6 +42,17 @@
             <%= approval.user.nickname %>さん：<%= approval.pros_and_cons.name %>
             <h3><%= approval.opinion %></h3>
           <% end %>
+            <%= form_with model: [@event, @pre_comment], id: "comment-form" do |f| %>
+              <%= f.text_area :content , class: "comment-text"%>
+              <%= f.submit "コメントをする", class: "comment-submit" %>
+            <% end %>
+          <h4>＜コメント一覧＞</h4>
+            <% @event.pre_comments.each do |pre_comment| %>
+              <div class="comment">
+                <p class="user-info"><%= pre_comment.user.nickname %>： </p>
+                <p><%= pre_comment.content%></p>
+              </div>
+            <% end %>
         <% else %>
         <h2>開催決定！！</h2>
         <% end %>
