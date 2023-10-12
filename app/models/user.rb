@@ -4,6 +4,8 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :building
   belongs_to :role
+  has_many :approvals
+  has_many :pre_comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :building_id, numericality: { other_than: 0 , message: "can't be blank"} 
