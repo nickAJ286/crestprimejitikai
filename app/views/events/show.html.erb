@@ -7,11 +7,11 @@
 <h3>詳細</h3>
 <%= @event.explanation %>
 <h3>開催日</h3>
-<%= @event.event_date %>
+<%= l @event.event_date %>
 <h3>開催時間</h3>
-<% unless @event.event_time == nil %>
-  <%= @event.event_time.strftime('%H:%M') %>
-<% end %>
+<%# unless @event.event_time == nil %>
+  <%= l @event.event_time %>
+<%# end %>
 <h3>開催場所</h3>
 <%= @event.place %>
 <h3>定員</h3>
@@ -49,8 +49,9 @@
           <h4>＜コメント一覧＞</h4>
             <% @event.pre_comments.each do |pre_comment| %>
               <div class="comment">
-                <p class="user-info"><%= pre_comment.user.nickname %>： </p>
+                <p class="user-info"><%= l pre_comment.created_at %> ： <%= pre_comment.user.nickname %> </p>
                 <p><%= pre_comment.content%></p>
+                -----------------------------------------------------
               </div>
             <% end %>
         <% else %>

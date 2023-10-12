@@ -21,12 +21,12 @@
 
   <div class="field">
     <%= f.label :開催日（希望日） %><br />
-    <%= f.date_select :event_date, placeholder:"希望の開催日があれば選択して下さい" %>
+    <%= f.date_select :event_date, use_month_numbers: true, start_year: 2022, end_year: 2030, prompt:"--", placeholder:"希望の開催日があれば選択して下さい" %>
   </div>
 
   <div class="field">
     <%= f.label :開催時間（希望開始時間） %><br />
-    <%= f.time_select :event_time, placeholder:"希望の開催時間があれば選択して下さい" %>
+    <%= f.time_select :event_time, prompt:"--", placeholder:"希望の開催時間があれば選択して下さい" %>
   </div>
 
   <div class="field">
