@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :approvals, only: [:index, :create, :edit, :update]
     resources :pre_comments, only: [:index, :create]
     resources :before_comments, only: [:index, :create]
+    resources :participations, only: [:index, :create, :edit, :update]
   end
 end
