@@ -22,6 +22,8 @@ class EventsController < ApplicationController
     @approvals = @event.approvals
     @pre_comments = @event.pre_comments.includes(:user)
     @pre_comment = PreComment.new
+    @before_comments = @event.before_comments.includes(:user)
+    @before_comment = BeforeComment.new
   end
 
   def edit
