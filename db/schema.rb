@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2023_10_13_060619) do
   create_table "participations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "number"
-    t.integer "participate_id", null: false
+    t.integer "choice_id", null: false
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
