@@ -1,0 +1,11 @@
+<h2>イベント名</h2>
+<%= @event.name %>
+
+<%= form_with model: @participation ,url: event_participations_path(@event), local: true do |f| %>
+  <%= f.label :参加方法 %><br />
+  <%= f.collection_select(:choice_id, Choice.all, :id, :name, {}) %><br />
+  <%= f.label :参加人数（お子様も参加される場合はご記入お願いします） %><br />
+  <%= f.text_field :number %>
+  <%= f.submit "参加する"  %>
+<% end %>
+<%=link_to 'トップへもどる', root_path, class:"back-btn" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_12_080317) do
+ActiveRecord::Schema.define(version: 2023_10_13_060619) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,18 @@ ActiveRecord::Schema.define(version: 2023_10_12_080317) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "participations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "number"
+    t.integer "choice_id", null: false
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_participations_on_event_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
   create_table "pre_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.bigint "event_id", null: false
@@ -103,6 +115,8 @@ ActiveRecord::Schema.define(version: 2023_10_12_080317) do
   add_foreign_key "before_comments", "events"
   add_foreign_key "before_comments", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
   add_foreign_key "pre_comments", "events"
   add_foreign_key "pre_comments", "users"
 end

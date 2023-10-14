@@ -56,6 +56,7 @@
             <% end %>
         <% else %>
         <h2>開催決定！！</h2>
+        <%= link_to "参加する（実行係と一般参加を選べます）", event_participations_path(@event) %>
         <% end %>
     <% end %>
     <% if @approvals.where(pros_and_cons_id: 2).count >= 1 %>
