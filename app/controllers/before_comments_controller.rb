@@ -1,6 +1,6 @@
 class BeforeCommentsController < ApplicationController
   def create
-    @before_comment = beforeComment.new(before_comment_params)
+    @before_comment = BeforeComment.new(before_comment_params)
     if @before_comment.save
       redirect_to event_path(params[:event_id])
     end
