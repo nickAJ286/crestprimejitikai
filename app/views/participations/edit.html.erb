@@ -1,0 +1,13 @@
+<h2>イベント名</h2>
+<%= @event.name %>
+
+<%= form_for @participation , url: event_participation_path(@event, @participation), method: :patch, local: true do |f| %>
+  <%= f.label :お名前（本名でお願いします） %><br />
+  <%= f.text_field :name %><br />
+  <%= f.label :参加変更 %><br />
+  <%= f.collection_select(:choice_id, Choice.all, :id, :name, {}) %>
+  <%= f.label :参加人数（お子様の参加の場合） %><br />
+  <%= f.text_field :number %>
+  <%= f.submit "変更する"  %>
+<% end %>
+<%=link_to 'トップへもどる', root_path, class:"back-btn" %>
