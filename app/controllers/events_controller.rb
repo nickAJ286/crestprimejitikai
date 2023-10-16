@@ -22,6 +22,7 @@ class EventsController < ApplicationController
     @approvals = @event.approvals
     @pre_comments = @event.pre_comments.includes(:user)
     @pre_comment = PreComment.new
+    @participation = @event.participations
     @before_comments = @event.before_comments.includes(:user)
     @before_comment = BeforeComment.new
   end
