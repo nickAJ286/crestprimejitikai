@@ -57,6 +57,7 @@
         <% end %>
         
     <% end %>
+    <% if @approvals.where(pros_and_cons_id: 2).count >= 1 %>
     <h2>開催決定！！</h2>
       <% if @participation.pluck(:user_id).include?(current_user.id) %>
           <%= link_to "編集する（参加登録済みの方はこちらから変更できます", edit_event_participation_path(@event.id) %>
@@ -64,7 +65,7 @@
           <%= link_to "参加する（実行係と一般参加を選べます）", event_participations_path(@event) %><br>
       <% end %>
     
-    <% if @approvals.where(pros_and_cons_id: 2).count >= 1 %>
+    
       <% if current_user.id == @event.user_id  || current_user.role_id == 2 || @participation.pluck(:user_id).include?(current_user.id) %>
         <%= form_with model: [@event, @before_comment], id: "comment-form" do |f| %>
           <%= f.text_area :content , class: "comment-text"%>
