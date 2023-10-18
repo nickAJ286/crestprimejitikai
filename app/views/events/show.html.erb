@@ -83,4 +83,25 @@
     <% end %>
   <% end %>
 <% end %>
+
+<% if @event.event_date <= Date.today %>
+  <% if user_signed_in? %>
+    <% if current_user.id == @event.user_id  || current_user.role_id == 2 || @participation.pluck(:user_id).include?(current_user.id) %>
+        <%= form_with model: [@event, @after_comment], id: "comment-form" do |f| %>
+          <%= f.text_area :content , class: "comment-text"%>
+          <%= f.file_field :image %>
+          <%= f.submit "コメントをする", class: "comment-submit" %>
+        <% end %>
+    <% end %>
+    <h4>＜コメント一覧＞</h4>
+    <% @event.after_comments.each do |after_comment| %>
+      <div class="comment">
+        <p class="user-info"><%= l after_comment.created_at, format: :long %> ： <%= after_comment.user.nickname %> </p>
+        <p><%= after_comment.content%></p>
+        <%= image_tag after_comment.image.variant(resize: '300x300'), class: 'message-image' if after_comment.image.attached? %><br>
+        -----------------------------------------------------
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
 <%=link_to 'トップページ', root_path %>

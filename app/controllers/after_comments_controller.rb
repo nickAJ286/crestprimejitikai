@@ -1,5 +1,6 @@
 class AfterCommentsController < ApplicationController
-  @after_comment = BeforeComment.new(after_comment_params)
+  def create
+    @after_comment = AfterComment.new(after_comment_params)
     if @after_comment.save
       redirect_to event_path(params[:event_id])
     end
