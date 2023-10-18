@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :pre_comments, only: [:index, :create]
     resources :before_comments, only: [:index, :create]
     resources :participations, only: [:index, :create, :edit, :update]
+    resources :after_comments, only: [:index, :create]
   end
 end

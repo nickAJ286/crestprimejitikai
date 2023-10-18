@@ -25,6 +25,8 @@ class EventsController < ApplicationController
     @participation = @event.participations
     @before_comments = @event.before_comments.includes(:user)
     @before_comment = BeforeComment.new
+    @after_comments = @event.after_comments.includes(:user)
+    @after_comment = AfterComment.new
   end
 
   def edit
