@@ -9,4 +9,6 @@ class Event < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
+  validates :catch_copy, presence: true
+
 end

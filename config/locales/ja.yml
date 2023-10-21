@@ -15,3 +15,8 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分"
     
     abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+  activerecord:
+    attributes:
+      event:
+        name: イベント名
+        catch_copy: キャッチコピー
