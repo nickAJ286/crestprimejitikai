@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_role
+  
   def index
     @users = User.all
   end
@@ -21,5 +23,11 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:nickname, :building_id, :room, :family_name, :first_name,:role_id)
+  end
+
+  def check_role
+    if current_user.role_id != 2
+      redirect_to root_path
+    end
   end
 end
