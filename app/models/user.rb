@@ -10,5 +10,11 @@ class User < ApplicationRecord
   has_many :after_comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :building_id, numericality: { other_than: 0 , message: "can't be blank"} 
+  validates :nickname, presence: true
+  validates :building_id, numericality: { other_than: 0 , message: "を選択して下さい"}
+  with_options presence: true do
+    validates :room
+    validates :family_name
+    validates :first_name
+  end
 end
