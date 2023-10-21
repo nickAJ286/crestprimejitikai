@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 
 <%= form_with model: @event, id: 'new_edit',local: true do |f| %>
+<%= render "layouts/error_messages", model: f.object %>
 
   <%#= f.file_field :image %>
 
