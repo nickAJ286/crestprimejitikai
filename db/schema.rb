@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_143835) do
     t.integer "room", null: false
     t.string "family_name", null: false
     t.string "first_name", null: false
-    t.integer "role_id", default: 1, null: false
+    t.integer "role_id", default: 2, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
