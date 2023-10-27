@@ -7,4 +7,8 @@ class Event < ApplicationRecord
   has_many :before_comments
   has_many :after_comments
   has_one_attached :image
+
+  validates :name, presence: true
+  validates :catch_copy, presence: true
+
 end

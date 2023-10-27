@@ -4,6 +4,7 @@
 <%= @event.catch_copy %>
 
 <%= form_with model: @approval ,url: event_approvals_path(@event), local: true do |f| %>
+<%= render "layouts/error_messages", model: f.object %>
   <%= f.label :賛否 %><br />
   <%= f.collection_select(:pros_and_cons_id, ProsAndCons.all, :id, :name, {}) %>
   <%= f.label :コメント %><br />

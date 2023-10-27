@@ -3,6 +3,11 @@ class PreCommentsController < ApplicationController
     @pre_comment = PreComment.new(pre_comment_params)
     if @pre_comment.save
       redirect_to event_path(params[:event_id])
+    else
+      @event = @pre_comment.event
+      @approvals = @event.approvals
+      # @pre_comments = @event.pre_comments.includes(:user)
+      render 'events/show'
     end
   end
 

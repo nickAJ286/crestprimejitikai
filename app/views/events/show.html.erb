@@ -43,6 +43,7 @@
               <h3><%= approval.opinion %></h3>
             <% end %>
             <%= form_with model: [@event, @pre_comment], id: "comment-form" do |f| %>
+            <%# <%= render "layouts/error_messages", model: f.object %>
               <%= f.text_area :content , class: "comment-text"%>
               <%= f.submit "コメントをする", class: "comment-submit" %>
             <% end %>
@@ -68,6 +69,7 @@
     
       <% if current_user.id == @event.user_id  || current_user.role_id == 2 || @participation.pluck(:user_id).include?(current_user.id) %>
         <%= form_with model: [@event, @before_comment], id: "comment-form" do |f| %>
+        <%= render "layouts/error_messages", model: f.object %>
           <%= f.text_area :content , class: "comment-text"%>
           <%= f.submit "コメントをする", class: "comment-submit" %>
         <% end %>
@@ -88,6 +90,7 @@
   <% if user_signed_in? %>
     <% if current_user.id == @event.user_id  || current_user.role_id == 2 || @participation.pluck(:user_id).include?(current_user.id) %>
         <%= form_with model: [@event, @after_comment], id: "comment-form" do |f| %>
+        <%= render "layouts/error_messages", model: f.object %>
           <%= f.text_area :content , class: "comment-text"%>
           <%= f.file_field :image %>
           <%= f.submit "コメントをする", class: "comment-submit" %>

@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @events = Event.all
     @approvals = Approval.all
@@ -13,7 +15,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path
     else
-      render :new
+      render 'new'
     end
   end
 

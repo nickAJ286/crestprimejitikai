@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_143835) do
   end
 
   create_table "after_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
+    t.string "content", null: false
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_143835) do
   end
 
   create_table "before_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
+    t.string "content", null: false
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2023_10_16_143835) do
   end
 
   create_table "pre_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
+    t.string "content", null: false
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

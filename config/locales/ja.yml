@@ -15,3 +15,16 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分"
     
     abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+  activerecord:
+    attributes:
+      event:
+        name: イベント名
+        catch_copy: キャッチコピー
+      user:
+        nickname: ニックネーム
+        building_id: 街区
+        room: 部屋番号
+        family_name: 名字
+        first_name: 名前
+      approval:
+        pros_and_cons_id: 賛成か反対か
