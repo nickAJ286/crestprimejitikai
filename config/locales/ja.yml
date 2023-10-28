@@ -20,6 +20,7 @@ ja:
       event:
         name: イベント名
         catch_copy: キャッチコピー
+        event_date: 開催日
       user:
         nickname: ニックネーム
         building_id: 街区
