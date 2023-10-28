@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def check_role
-    if current_user.role_id != 2
+    if current_user.role_id != 2 && current_user.id != 1
       redirect_to root_path
     end
   end

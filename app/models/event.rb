@@ -10,5 +10,7 @@ class Event < ApplicationRecord
 
   validates :name, presence: true
   validates :catch_copy, presence: true
+  validates :event_date, presence: true
+  validates :event_time, presence: true
 
 end
