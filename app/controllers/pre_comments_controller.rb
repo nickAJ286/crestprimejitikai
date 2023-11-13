@@ -2,7 +2,8 @@ class PreCommentsController < ApplicationController
   def create
     @pre_comment = PreComment.new(pre_comment_params)
     if @pre_comment.save
-      redirect_to event_path(params[:event_id])
+      ActionCable.server.broadcast "pre_comment_channel", {pre_comment: @pre_comment, user: @pre_comment.user} 
+      # redirect_to event_path(params[:event_id])
     else
       @event = @pre_comment.event
       @approvals = @event.approvals
