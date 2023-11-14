@@ -42,11 +42,14 @@
               <%= approval.user.nickname %>さん：<%= approval.pros_and_cons.name %>
               <h3><%= approval.opinion %></h3>
             <% end %>
+          <%# <div id="pre-comment-form"> %>
             <%= form_with model: [@event, @pre_comment], id: "comment-form" do |f| %>
             <%# <%= render "layouts/error_messages", model: f.object %>
-              <%= f.text_area :content , class: "comment-text"%>
+              <%= f.text_area :content , class: "comment-text" %>
               <%= f.submit "コメントをする", class: "comment-submit" %>
             <% end %>
+          <%# </div> %>
+        <div id="pre_comments">
           <h4>＜コメント一覧＞</h4>
             <% @event.pre_comments.each do |pre_comment| %>
               <div class="comment">
@@ -55,6 +58,7 @@
                 -----------------------------------------------------
               </div>
             <% end %>
+        </div>
         <% end %>
         
     <% end %>
