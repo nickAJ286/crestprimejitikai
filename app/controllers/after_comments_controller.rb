@@ -1,8 +1,10 @@
 class AfterCommentsController < ApplicationController
   def create
     @after_comment = AfterComment.new(after_comment_params)
+    @event = Event.find(params[:event_id])
     if @after_comment.save
-      redirect_to event_path(params[:event_id])
+      AfterCommentChannel.broadcast_to @event, { after_comment: @after_comment, user: @after_comment.user } #追加
+      # redirect_to event_path(params[:event_id])
     end
   end
 
